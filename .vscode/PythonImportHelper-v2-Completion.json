@@ -1,0 +1,169 @@
+[
+    {
+        "label": "getenv",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "Faker",
+        "importPath": "faker",
+        "description": "faker",
+        "isExtraImport": true,
+        "detail": "faker",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "random_run",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def random_run(fake: Faker)-> int:\n  return fake.unique.random_int(10000000,99999999)\ndef patrimonio_inmaterial(cursor,nombre_elemento):\n  cursor.execute(f\"INSERT INTO patrimonio_inmaterial (nombre_elemento) VALUES (%s)\",(nombre_elemento,))\ndef entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None\ndef persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "patrimonio_inmaterial",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def patrimonio_inmaterial(cursor,nombre_elemento):\n  cursor.execute(f\"INSERT INTO patrimonio_inmaterial (nombre_elemento) VALUES (%s)\",(nombre_elemento,))\ndef entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None\ndef persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)\n  if id_entidad is not None:\n    cursor.execute(f\"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)\",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "entidad",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None\ndef persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)\n  if id_entidad is not None:\n    cursor.execute(f\"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)\",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))\nif __name__ == \"__main__\":  \n  load_dotenv()",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "persona_natural",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)\n  if id_entidad is not None:\n    cursor.execute(f\"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)\",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))\nif __name__ == \"__main__\":  \n  load_dotenv()\n  database = getenv(\"DATABASE_NAME\") or \"postgres\"\n  user = getenv(\"DATABASE_USER\") or \"postgres\"\n  host = getenv(\"DATABASE_HOST\") or \"localhost\"\n  port = getenv(\"DATABASE_PORT\") or \"5432\"",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_modalidad_actividad",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",\n    \"marroquineria y talabarteria (cueros)\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_sexo",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",\n    \"marroquineria y talabarteria (cueros)\",\n    \"metales y orfebreria\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_disciplina_artesano",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",\n    \"marroquineria y talabarteria (cueros)\",\n    \"metales y orfebreria\",\n    \"papel\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_vinculo",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_vinculo = (\"temporal\", \"contratado\",\"voluntario\")\ntipo_mon_nac = (\n    \"monumento historico mueble\",\n    \"monumento historico inmueble\",\n    \"santuario de la naturaleza\",\n    \"zona tipica\",\n)\ntipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_mon_nac",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_mon_nac = (\n    \"monumento historico mueble\",\n    \"monumento historico inmueble\",\n    \"santuario de la naturaleza\",\n    \"zona tipica\",\n)\ntipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (\n    \"Mapuche\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_pat_natural",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_nivel_educacional",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",\n    \"Diaguita\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_pueblo_originario",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "tipo_pueblo_originario = (\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",\n    \"Diaguita\",\n    \"Kawesqar\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "valores_ambito_patrimonio",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "valores_ambito_patrimonio = [\n    \"Artes del espectáculo\",\n    \"Conocimientos y usos relacionados con la naturaleza y el universo\",\n    \"Técnicas Artesanales tradicionales\",\n    \"Tradiciones y Expresiones Orales\",\n    \"Usos sociales, rituales y actos festivos\",\n]\nvalores_patrimonio_inmaterial = [\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "valores_patrimonio_inmaterial",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "valores_patrimonio_inmaterial = [\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha\",\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Bailes chinos\",\n    \"Danza cachimbo de las comunas de Pica, Huara y Pozo Almonte\",\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Bailes chinos\",\n    \"Bailes Devocionales de la Oficina Salitrera Pedro de Valdivia\",\n    \"Bailes tradicionales de San Pedro de Atacama\",",
+        "detail": "valores",
+        "documentation": {}
+    }
+]

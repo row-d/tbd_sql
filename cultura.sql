@@ -17,7 +17,7 @@ create DOMAIN disciplina_artesano as varchar check(
     'otros'
   )
 );
-CREATE DOMAIN tipo_vinculo AS VARCHAR NOT NULL CHECK(VALUE IN ('contrato', 'externo'));
+CREATE DOMAIN tipo_vinculo AS VARCHAR NOT NULL CHECK(VALUE IN ('temporal', 'contratado','voluntario'));
 CREATE DOMAIN tipo_mon_nac AS VARCHAR CHECK(
   VALUE IN (
     'monumento historico mueble',
