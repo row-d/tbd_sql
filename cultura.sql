@@ -107,7 +107,6 @@ create table persona_natural(
   id_entidad INTEGER PRIMARY KEY REFERENCES entidad(id_entidad),
   rut INTEGER UNIQUE NOT NULL,
   nombre_elemento VARCHAR REFERENCES patrimonio_inmaterial(nombre_elemento),
-  nombre VARCHAR NOT NULL,
   sexo sexo NOT NULL,
   fecha_nacimiento DATE NOT NULL,
   direccion VARCHAR NOT NULL, 
