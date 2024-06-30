@@ -112,7 +112,7 @@ create table persona_natural(
   fecha_nacimiento DATE NOT NULL,
   direccion VARCHAR NOT NULL, 
   nombre_pueblo_ori pueblo_originario,
-  discapacidad VARCHAR NOT NULL
+  discapacidad BOOLEAN NOT NULL
 );
 
 create table artesano(
@@ -228,8 +228,6 @@ CREATE TABLE acude(
 );
 
 CREATE TABLE ambito_patrimonio(ambito VARCHAR PRIMARY KEY);
-
-
 
 CREATE TABLE corresponde(
   nombre_elemento VARCHAR NOT NULL REFERENCES patrimonio_inmaterial(nombre_elemento),
