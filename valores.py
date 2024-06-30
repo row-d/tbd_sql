@@ -1,3 +1,5 @@
+rango_cod_comuna = (347, 692)
+rango_rut_valido = (10000000, 99999999)
 tipo_modalidad_actividad = ("presencial", "virtual", "ambas")
 tipo_sexo = ("mujer", "hombre")
 tipo_disciplina_artesano = (
@@ -14,7 +16,7 @@ tipo_disciplina_artesano = (
     "vidrio",
     "otros",
 )
-tipo_vinculo = ("temporal", "contratado","voluntario")
+tipo_vinculo = ("temporal", "contratado", "voluntario")
 tipo_mon_nac = (
     "monumento historico mueble",
     "monumento historico inmueble",
@@ -26,7 +28,7 @@ tipo_pat_natural = ("Monumento natural", "parque nacional", "reserva nacional")
 
 tipo_nivel_educacional = ("basica", "media")
 
-tipo_pueblo_originario = (
+tipo_pueblo_originario = [
     "Mapuche",
     "Aymara",
     "Rapa Nui",
@@ -37,7 +39,8 @@ tipo_pueblo_originario = (
     "Diaguita",
     "Kawesqar",
     "Yagan",
-)
+    None,
+]
 
 valores_ambito_patrimonio = [
     "Artes del espectáculo",
@@ -47,7 +50,7 @@ valores_ambito_patrimonio = [
     "Usos sociales, rituales y actos festivos",
 ]
 
-valores_patrimonio_inmaterial = [
+valores_nombre_elemento_patrimonio_inmaterial = [
     "Baile de morenos de paso en la región de Arica y Parinacota",
     "Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha",
     "Baile de morenos de paso en la región de Arica y Parinacota",

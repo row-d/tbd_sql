@@ -1,5 +1,13 @@
 [
     {
+        "label": "entidad",
+        "importPath": "entidades.entidad",
+        "description": "entidades.entidad",
+        "isExtraImport": true,
+        "detail": "entidades.entidad",
+        "documentation": {}
+    },
+    {
         "label": "getenv",
         "importPath": "os",
         "description": "os",
@@ -41,39 +49,92 @@
         "documentation": {}
     },
     {
-        "label": "random_run",
-        "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def random_run(fake: Faker)-> int:\n  return fake.unique.random_int(10000000,99999999)\ndef patrimonio_inmaterial(cursor,nombre_elemento):\n  cursor.execute(f\"INSERT INTO patrimonio_inmaterial (nombre_elemento) VALUES (%s)\",(nombre_elemento,))\ndef entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None\ndef persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)",
-        "detail": "generar_datos",
-        "documentation": {}
-    },
-    {
-        "label": "patrimonio_inmaterial",
-        "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def patrimonio_inmaterial(cursor,nombre_elemento):\n  cursor.execute(f\"INSERT INTO patrimonio_inmaterial (nombre_elemento) VALUES (%s)\",(nombre_elemento,))\ndef entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None\ndef persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)\n  if id_entidad is not None:\n    cursor.execute(f\"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)\",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))",
-        "detail": "generar_datos",
+        "label": "persona_natural",
+        "importPath": "entidades.persona_natural",
+        "description": "entidades.persona_natural",
+        "isExtraImport": true,
+        "detail": "entidades.persona_natural",
         "documentation": {}
     },
     {
         "label": "entidad",
         "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None\ndef persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)\n  if id_entidad is not None:\n    cursor.execute(f\"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)\",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))\nif __name__ == \"__main__\":  \n  load_dotenv()",
-        "detail": "generar_datos",
+        "importPath": "entidades.entidad",
+        "description": "entidades.entidad",
+        "peekOfCode": "def entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None",
+        "detail": "entidades.entidad",
         "documentation": {}
     },
     {
         "label": "persona_natural",
         "kind": 2,
+        "importPath": "entidades.persona_natural",
+        "description": "entidades.persona_natural",
+        "peekOfCode": "def persona_natural(\n    cursor,\n    cod_comuna,\n    rut,\n    nombre_elemento,\n    nombre,\n    sexo,\n    fecha_nacimiento,\n    direccion,\n    nombre_pueblo_ori,",
+        "detail": "entidades.persona_natural",
+        "documentation": {}
+    },
+    {
+        "label": "random_run",
+        "kind": 2,
         "importPath": "generar_datos",
         "description": "generar_datos",
-        "peekOfCode": "def persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):\n  id_entidad = entidad(cursor,nombre,cod_comuna)\n  if id_entidad is not None:\n    cursor.execute(f\"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)\",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))\nif __name__ == \"__main__\":  \n  load_dotenv()\n  database = getenv(\"DATABASE_NAME\") or \"postgres\"\n  user = getenv(\"DATABASE_USER\") or \"postgres\"\n  host = getenv(\"DATABASE_HOST\") or \"localhost\"\n  port = getenv(\"DATABASE_PORT\") or \"5432\"",
+        "peekOfCode": "def random_run(fake: Faker) -> int:\n    return fake.unique.random_int(*rango_rut_valido)\ndef random_cod_comuna(fake: Faker) -> int:\n    return fake.random_int(*rango_cod_comuna)\ndef random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)",
         "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "random_cod_comuna",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def random_cod_comuna(fake: Faker) -> int:\n    return fake.random_int(*rango_cod_comuna)\ndef random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "random_nombre_elemento",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "random_sexo",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"\n    host = getenv(\"DATABASE_HOST\") or \"localhost\"\n    port = getenv(\"DATABASE_PORT\") or \"5432\"",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "random_pueblo_originario",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"\n    host = getenv(\"DATABASE_HOST\") or \"localhost\"\n    port = getenv(\"DATABASE_PORT\") or \"5432\"\n    fake = Faker()\n    conn = psycopg2.connect(database=database, user=user, host=host, port=port)",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "rango_cod_comuna",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "rango_cod_comuna = (347, 692)\nrango_rut_valido = (10000000, 99999999)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "rango_rut_valido",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "rango_rut_valido = (10000000, 99999999)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",",
+        "detail": "valores",
         "documentation": {}
     },
     {
@@ -108,7 +169,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "tipo_vinculo = (\"temporal\", \"contratado\",\"voluntario\")\ntipo_mon_nac = (\n    \"monumento historico mueble\",\n    \"monumento historico inmueble\",\n    \"santuario de la naturaleza\",\n    \"zona tipica\",\n)\ntipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (",
+        "peekOfCode": "tipo_vinculo = (\"temporal\", \"contratado\", \"voluntario\")\ntipo_mon_nac = (\n    \"monumento historico mueble\",\n    \"monumento historico inmueble\",\n    \"santuario de la naturaleza\",\n    \"zona tipica\",\n)\ntipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = [",
         "detail": "valores",
         "documentation": {}
     },
@@ -117,7 +178,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "tipo_mon_nac = (\n    \"monumento historico mueble\",\n    \"monumento historico inmueble\",\n    \"santuario de la naturaleza\",\n    \"zona tipica\",\n)\ntipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (\n    \"Mapuche\",",
+        "peekOfCode": "tipo_mon_nac = (\n    \"monumento historico mueble\",\n    \"monumento historico inmueble\",\n    \"santuario de la naturaleza\",\n    \"zona tipica\",\n)\ntipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = [\n    \"Mapuche\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -126,7 +187,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "tipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",",
+        "peekOfCode": "tipo_pat_natural = (\"Monumento natural\", \"parque nacional\", \"reserva nacional\")\ntipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = [\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -135,7 +196,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "tipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = (\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",\n    \"Diaguita\",",
+        "peekOfCode": "tipo_nivel_educacional = (\"basica\", \"media\")\ntipo_pueblo_originario = [\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",\n    \"Diaguita\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -144,7 +205,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "tipo_pueblo_originario = (\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",\n    \"Diaguita\",\n    \"Kawesqar\",",
+        "peekOfCode": "tipo_pueblo_originario = [\n    \"Mapuche\",\n    \"Aymara\",\n    \"Rapa Nui\",\n    \"Atacamenos\",\n    \"Quechua\",\n    \"Colla\",\n    \"Chango\",\n    \"Diaguita\",\n    \"Kawesqar\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -153,16 +214,16 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "valores_ambito_patrimonio = [\n    \"Artes del espectáculo\",\n    \"Conocimientos y usos relacionados con la naturaleza y el universo\",\n    \"Técnicas Artesanales tradicionales\",\n    \"Tradiciones y Expresiones Orales\",\n    \"Usos sociales, rituales y actos festivos\",\n]\nvalores_patrimonio_inmaterial = [\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha\",",
+        "peekOfCode": "valores_ambito_patrimonio = [\n    \"Artes del espectáculo\",\n    \"Conocimientos y usos relacionados con la naturaleza y el universo\",\n    \"Técnicas Artesanales tradicionales\",\n    \"Tradiciones y Expresiones Orales\",\n    \"Usos sociales, rituales y actos festivos\",\n]\nvalores_nombre_elemento_patrimonio_inmaterial = [\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha\",",
         "detail": "valores",
         "documentation": {}
     },
     {
-        "label": "valores_patrimonio_inmaterial",
+        "label": "valores_nombre_elemento_patrimonio_inmaterial",
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "valores_patrimonio_inmaterial = [\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha\",\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Bailes chinos\",\n    \"Danza cachimbo de las comunas de Pica, Huara y Pozo Almonte\",\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Bailes chinos\",\n    \"Bailes Devocionales de la Oficina Salitrera Pedro de Valdivia\",\n    \"Bailes tradicionales de San Pedro de Atacama\",",
+        "peekOfCode": "valores_nombre_elemento_patrimonio_inmaterial = [\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Tradición de las Cruces de Mayo afrodescendientes en los valles de Azapa, Lluta y Acha\",\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Bailes chinos\",\n    \"Danza cachimbo de las comunas de Pica, Huara y Pozo Almonte\",\n    \"Baile de morenos de paso en la región de Arica y Parinacota\",\n    \"Bailes chinos\",\n    \"Bailes Devocionales de la Oficina Salitrera Pedro de Valdivia\",\n    \"Bailes tradicionales de San Pedro de Atacama\",",
         "detail": "valores",
         "documentation": {}
     }

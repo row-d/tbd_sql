@@ -3,41 +3,59 @@ from dotenv import load_dotenv
 import psycopg2
 from faker import Faker
 from valores import *
-
-def random_run(fake: Faker)-> int:
-  return fake.unique.random_int(10000000,99999999)
-
-def patrimonio_inmaterial(cursor,nombre_elemento):
-  cursor.execute(f"INSERT INTO patrimonio_inmaterial (nombre_elemento) VALUES (%s)",(nombre_elemento,))
-
-def entidad(cursor,nombre,cod_comuna)-> int | None:
-  cursor.execute(f"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad",(nombre,cod_comuna))
-  result = cursor.fetchone()
-  return result[0] if result else None
-
-def persona_natural(cursor,cod_comuna,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad):
-  id_entidad = entidad(cursor,nombre,cod_comuna)
-  if id_entidad is not None:
-    cursor.execute(f"INSERT INTO persona_natural (id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",(id_entidad,rut,nombre_elemento,nombre,sexo,fecha_nacimiento,direccion,nombre_pueblo_ori,discapacidad))
+from entidades.persona_natural import persona_natural
 
 
-if __name__ == "__main__":  
-  load_dotenv()
-  database = getenv("DATABASE_NAME") or "postgres"
-  user = getenv("DATABASE_USER") or "postgres"
-  host = getenv("DATABASE_HOST") or "localhost"
-  port = getenv("DATABASE_PORT") or "5432"
-  
-  fake = Faker()
-  conn = psycopg2.connect(database=database, user=user, host=host, port=port)
-  cursor = conn.cursor()
-  # queries
-  rango_cod_comunas = (347,692)
-  # crear persona_natural
-  
-  
-  
-  # end queries 
-  conn.commit()
-  cursor.close()
-  conn.close()
+def random_run(fake: Faker) -> int:
+    return fake.unique.random_int(*rango_rut_valido)
+
+
+def random_cod_comuna(fake: Faker) -> int:
+    return fake.random_int(*rango_cod_comuna)
+
+
+def random_nombre_elemento(fake: Faker) -> str:
+    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)
+
+
+def random_sexo(fake: Faker) -> str:
+    return fake.random_element(tipo_sexo)
+
+
+def random_pueblo_originario(fake: Faker) -> str | None:
+    return fake.random_element(tipo_pueblo_originario)
+
+
+if __name__ == "__main__":
+    load_dotenv()
+    database = getenv("DATABASE_NAME") or "postgres"
+    user = getenv("DATABASE_USER") or "postgres"
+    host = getenv("DATABASE_HOST") or "localhost"
+    port = getenv("DATABASE_PORT") or "5432"
+
+    fake = Faker()
+    conn = psycopg2.connect(database=database, user=user, host=host, port=port)
+    cursor = conn.cursor()
+
+    # util data
+    filas_por_entidad = 10
+    # queries
+    # - persona_natural
+    for _ in range(filas_por_entidad):
+        persona_natural(
+            cursor,
+            random_cod_comuna(fake),
+            random_run(fake),
+            random_nombre_elemento(fake),
+            fake.name(),
+            random_sexo(fake),
+            fake.date_of_birth(),
+            fake.address(),
+            random_pueblo_originario(fake),
+            fake.boolean(25),
+        )
+
+    # end queries
+    conn.commit()
+    cursor.close()
+    conn.close()
