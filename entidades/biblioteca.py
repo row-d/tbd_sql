@@ -3,5 +3,5 @@ def biblioteca(cursor, nombre_bib):
         "INSERT INTO biblioteca (nombre_bib) VALUES (%s) RETURNING id_biblioteca",
         (nombre_bib,),
     )
-    result = cursor.fetchone()
-    return result[0]
+    id_biblioteca = cursor.fetchone()[0]
+    return int(id_biblioteca)

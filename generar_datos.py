@@ -1,42 +1,27 @@
-import psycopg2
 import sys
-from os import getenv
-from dotenv import load_dotenv
-from faker import Faker
 from valores import *
 from utils import *
+from flow_template import flow_template
+from entidades.persona_juridica import persona_juridica
 from entidades.persona_natural import persona_natural
 from entidades.artesano import artesano
 from entidades.estudiante import estudiante
-from entidades.persona_juridica import persona_juridica
 from entidades.biblioteca_publica import biblioteca_publica
+from entidades.establecimiento_educacional import establecimiento_educacional
 from entidades.biblioteca_escolar_cra import biblioteca_escolar_cra
 from entidades.artesania import artesania
 from entidades.ano import ano
-from entidades.establecimiento_educacional import establecimiento_educacional
 
 
-if __name__ == "__main__":
-    load_dotenv()
-    database = getenv("DATABASE_NAME") or "postgres"
-    user = getenv("DATABASE_USER") or "postgres"
-    host = getenv("DATABASE_HOST") or "localhost"
-    port = getenv("DATABASE_PORT") or "5432"
-
-    fake = Faker("es_CL")
-    conn = psycopg2.connect(database=database, user=user, host=host, port=port)
-    cursor = conn.cursor()
-
-    # util data
+def main(cursor, fake):
     filas_por_entidad = 10
     personas_juridicas = []
     personas_naturales = []
     estudiantes = []
     artesanos = []
     codigos_est = []
-    # queries
+    bibs_esc_cra = []
 
-    # READ ARGS
     if len(sys.argv) > 1 and sys.argv[1] in ("--first", "-f"):
         cursor.execute(open("cultura.sql", "r").read())
         cursor.execute(open("seed.sql", "r").read())
@@ -121,10 +106,9 @@ if __name__ == "__main__":
             random_artesano[1],
         )
     # - ano
-    for y in range(1900, 2025):
+    for y in range(*rango_ano):
         ano(cursor, y)
 
-    # end queries
-    conn.commit()
-    cursor.close()
-    conn.close()
+
+if __name__ == "__main__":
+    flow_template(main)

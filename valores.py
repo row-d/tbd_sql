@@ -1,5 +1,6 @@
 rango_cod_comuna = (1, 346)
 rango_rut_valido = (10000000, 99999999)
+rango_ano = (1900, 2025)
 tipo_modalidad_actividad = ("presencial", "virtual", "ambas")
 tipo_sexo = ("mujer", "hombre")
 tipo_disciplina_artesano = (

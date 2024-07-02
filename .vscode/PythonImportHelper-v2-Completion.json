@@ -88,7 +88,7 @@
         "documentation": {}
     },
     {
-        "label": "*",
+        "label": "rango_ano",
         "importPath": "valores",
         "description": "valores",
         "isExtraImport": true,
@@ -96,21 +96,11 @@
         "documentation": {}
     },
     {
-        "label": "psycopg2",
-        "kind": 6,
+        "label": "*",
+        "importPath": "valores",
+        "description": "valores",
         "isExtraImport": true,
-        "importPath": "psycopg2",
-        "description": "psycopg2",
-        "detail": "psycopg2",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "detail": "valores",
         "documentation": {}
     },
     {
@@ -146,11 +136,84 @@
         "documentation": {}
     },
     {
+        "label": "Faker",
+        "importPath": "faker",
+        "description": "faker",
+        "isExtraImport": true,
+        "detail": "faker",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "isExtraImport": true,
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "importPath": "psycopg2._psycopg",
+        "description": "psycopg2._psycopg",
+        "isExtraImport": true,
+        "detail": "psycopg2._psycopg",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "importPath": "psycopg2._psycopg",
+        "description": "psycopg2._psycopg",
+        "isExtraImport": true,
+        "detail": "psycopg2._psycopg",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
         "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "flow_template",
+        "importPath": "flow_template",
+        "description": "flow_template",
+        "isExtraImport": true,
+        "detail": "flow_template",
+        "documentation": {}
+    },
+    {
+        "label": "flow_template",
+        "importPath": "flow_template",
+        "description": "flow_template",
+        "isExtraImport": true,
+        "detail": "flow_template",
+        "documentation": {}
+    },
+    {
+        "label": "persona_juridica",
+        "importPath": "entidades.persona_juridica",
+        "description": "entidades.persona_juridica",
+        "isExtraImport": true,
+        "detail": "entidades.persona_juridica",
         "documentation": {}
     },
     {
@@ -170,19 +233,19 @@
         "documentation": {}
     },
     {
-        "label": "persona_juridica",
-        "importPath": "entidades.persona_juridica",
-        "description": "entidades.persona_juridica",
-        "isExtraImport": true,
-        "detail": "entidades.persona_juridica",
-        "documentation": {}
-    },
-    {
         "label": "biblioteca_publica",
         "importPath": "entidades.biblioteca_publica",
         "description": "entidades.biblioteca_publica",
         "isExtraImport": true,
         "detail": "entidades.biblioteca_publica",
+        "documentation": {}
+    },
+    {
+        "label": "establecimiento_educacional",
+        "importPath": "entidades.establecimiento_educacional",
+        "description": "entidades.establecimiento_educacional",
+        "isExtraImport": true,
+        "detail": "entidades.establecimiento_educacional",
         "documentation": {}
     },
     {
@@ -210,11 +273,11 @@
         "documentation": {}
     },
     {
-        "label": "establecimiento_educacional",
-        "importPath": "entidades.establecimiento_educacional",
-        "description": "entidades.establecimiento_educacional",
+        "label": "atiende_ano",
+        "importPath": "relaciones.atiende_ano",
+        "description": "relaciones.atiende_ano",
         "isExtraImport": true,
-        "detail": "entidades.establecimiento_educacional",
+        "detail": "relaciones.atiende_ano",
         "documentation": {}
     },
     {
@@ -249,7 +312,7 @@
         "kind": 2,
         "importPath": "entidades.biblioteca",
         "description": "entidades.biblioteca",
-        "peekOfCode": "def biblioteca(cursor, nombre_bib):\n    cursor.execute(\n        \"INSERT INTO biblioteca (nombre_bib) VALUES (%s) RETURNING id_biblioteca\",\n        (nombre_bib,),\n    )\n    result = cursor.fetchone()\n    return result[0]",
+        "peekOfCode": "def biblioteca(cursor, nombre_bib):\n    cursor.execute(\n        \"INSERT INTO biblioteca (nombre_bib) VALUES (%s) RETURNING id_biblioteca\",\n        (nombre_bib,),\n    )\n    id_biblioteca = cursor.fetchone()[0]\n    return int(id_biblioteca)",
         "detail": "entidades.biblioteca",
         "documentation": {}
     },
@@ -258,7 +321,7 @@
         "kind": 2,
         "importPath": "entidades.biblioteca_escolar_cra",
         "description": "entidades.biblioteca_escolar_cra",
-        "peekOfCode": "def biblioteca_escolar_cra(cursor, nom_bib, codigo_est) -> None:\n    id_biblioteca = biblioteca(cursor, nom_bib)\n    codigo_est = int(codigo_est)\n    cursor.execute(\n        \"INSERT INTO biblioteca_escolar_cra (id_biblioteca,codigo_est) VALUES (%s,%s)\",\n        (id_biblioteca, codigo_est),\n    )",
+        "peekOfCode": "def biblioteca_escolar_cra(cursor, nom_bib, codigo_est):\n    id_biblioteca = biblioteca(cursor, nom_bib)\n    codigo_est = int(codigo_est)\n    cursor.execute(\n        \"INSERT INTO biblioteca_escolar_cra (id_biblioteca,codigo_est) VALUES (%s,%s)\",\n        (id_biblioteca, codigo_est),\n    )\n    return id_biblioteca",
         "detail": "entidades.biblioteca_escolar_cra",
         "documentation": {}
     },
@@ -314,6 +377,42 @@
         "description": "entidades.persona_natural",
         "peekOfCode": "def persona_natural(\n    cursor,\n    cod_comuna,\n    rut,\n    nombre_elemento,\n    nombre,\n    sexo,\n    fecha_nacimiento,\n    direccion,\n    nombre_pueblo_ori,",
         "detail": "entidades.persona_natural",
+        "documentation": {}
+    },
+    {
+        "label": "atiende_ano",
+        "kind": 2,
+        "importPath": "relaciones.atiende_ano",
+        "description": "relaciones.atiende_ano",
+        "peekOfCode": "def atiende_ano(cursor, id_biblioteca, ano):\n    cursor.execute(\n        \"INSERT INTO atiende_ano (id_biblioteca, ano) VALUES (%s, %s)\",\n        (id_biblioteca, ano),\n    )\n    return cursor.lastrowid",
+        "detail": "relaciones.atiende_ano",
+        "documentation": {}
+    },
+    {
+        "label": "flow_template",
+        "kind": 2,
+        "importPath": "flow_template",
+        "description": "flow_template",
+        "peekOfCode": "def flow_template(closure: Callable[[cursor, Faker], None]):\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"\n    host = getenv(\"DATABASE_HOST\") or \"localhost\"\n    port = getenv(\"DATABASE_PORT\") or \"5432\"\n    fake = Faker(\"es_CL\")\n    conn = connect(database=database, user=user, host=host, port=port)\n    cursor = conn.cursor()\n    closure(cursor, fake)",
+        "detail": "flow_template",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "generar_datos",
+        "description": "generar_datos",
+        "peekOfCode": "def main(cursor, fake):\n    filas_por_entidad = 10\n    personas_juridicas = []\n    personas_naturales = []\n    estudiantes = []\n    artesanos = []\n    codigos_est = []\n    bibs_esc_cra = []\n    if len(sys.argv) > 1 and sys.argv[1] in (\"--first\", \"-f\"):\n        cursor.execute(open(\"cultura.sql\", \"r\").read())",
+        "detail": "generar_datos",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "generar_relaciones",
+        "description": "generar_relaciones",
+        "peekOfCode": "def main(cursor: cursor, fake: Faker):\n    cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n    ids_biblioteca = cursor.fetchall()\n    for id_biblioteca in ids_biblioteca:\n        for y in range(*rango_ano):\n            if fake.boolean(50):\n                atiende_ano(cursor, id_biblioteca[0], y)\nif __name__ == \"__main__\":\n    flow_template(main)",
+        "detail": "generar_relaciones",
         "documentation": {}
     },
     {
@@ -375,7 +474,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_cod_comuna = (1, 346)\nrango_rut_valido = (10000000, 99999999)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
+        "peekOfCode": "rango_cod_comuna = (1, 346)\nrango_rut_valido = (10000000, 99999999)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -384,7 +483,16 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_rut_valido = (10000000, 99999999)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",",
+        "peekOfCode": "rango_rut_valido = (10000000, 99999999)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "rango_ano",
+        "kind": 5,
+        "importPath": "valores",
+        "description": "valores",
+        "peekOfCode": "rango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",",
         "detail": "valores",
         "documentation": {}
     },
