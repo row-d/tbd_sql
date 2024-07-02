@@ -165,8 +165,8 @@ CREATE TABLE ano(ano INTEGER PRIMARY KEY);
 CREATE TABLE atiende_ano(
   id_biblioteca INTEGER NOT NULL REFERENCES biblioteca_escolar_cra(id_biblioteca),
   ano INTEGER NOT NULL REFERENCES ano(ano),
-  nivel_medio INTEGER,
-  nivel_basico INTEGER,
+  nivel_medio INTEGER DEFAULT 0,
+  nivel_basico INTEGER DEFAULT 0,
   CONSTRAINT atiende_ano_pk PRIMARY KEY (id_biblioteca, ano)
 );
 
