@@ -384,7 +384,7 @@
         "kind": 2,
         "importPath": "relaciones.atiende_ano",
         "description": "relaciones.atiende_ano",
-        "peekOfCode": "def atiende_ano(cursor, id_biblioteca, ano):\n    cursor.execute(\n        \"INSERT INTO atiende_ano (id_biblioteca, ano) VALUES (%s, %s)\",\n        (id_biblioteca, ano),\n    )\n    return cursor.lastrowid",
+        "peekOfCode": "def atiende_ano(cursor, id_biblioteca, ano):\n    cursor.execute(\n        \"INSERT INTO atiende_ano (id_biblioteca, ano) VALUES (%s, %s)\",\n        (id_biblioteca, ano),\n    )",
         "detail": "relaciones.atiende_ano",
         "documentation": {}
     },
