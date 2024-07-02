@@ -1,10 +1,116 @@
 [
     {
+        "label": "persona_natural",
+        "importPath": "entidades.persona_natural",
+        "description": "entidades.persona_natural",
+        "isExtraImport": true,
+        "detail": "entidades.persona_natural",
+        "documentation": {}
+    },
+    {
+        "label": "persona_natural",
+        "importPath": "entidades.persona_natural",
+        "description": "entidades.persona_natural",
+        "isExtraImport": true,
+        "detail": "entidades.persona_natural",
+        "documentation": {}
+    },
+    {
+        "label": "persona_natural",
+        "importPath": "entidades.persona_natural",
+        "description": "entidades.persona_natural",
+        "isExtraImport": true,
+        "detail": "entidades.persona_natural",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca",
+        "importPath": "entidades.biblioteca",
+        "description": "entidades.biblioteca",
+        "isExtraImport": true,
+        "detail": "entidades.biblioteca",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca",
+        "importPath": "entidades.biblioteca",
+        "description": "entidades.biblioteca",
+        "isExtraImport": true,
+        "detail": "entidades.biblioteca",
+        "documentation": {}
+    },
+    {
         "label": "entidad",
         "importPath": "entidades.entidad",
         "description": "entidades.entidad",
         "isExtraImport": true,
         "detail": "entidades.entidad",
+        "documentation": {}
+    },
+    {
+        "label": "entidad",
+        "importPath": "entidades.entidad",
+        "description": "entidades.entidad",
+        "isExtraImport": true,
+        "detail": "entidades.entidad",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_pueblo_originario",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "tipo_sexo",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "valores_nombre_elemento_patrimonio_inmaterial",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -24,12 +130,11 @@
         "documentation": {}
     },
     {
-        "label": "psycopg2",
-        "kind": 6,
+        "label": "Faker",
+        "importPath": "faker",
+        "description": "faker",
         "isExtraImport": true,
-        "importPath": "psycopg2",
-        "description": "psycopg2",
-        "detail": "psycopg2",
+        "detail": "faker",
         "documentation": {}
     },
     {
@@ -42,18 +147,128 @@
     },
     {
         "label": "*",
-        "importPath": "valores",
-        "description": "valores",
+        "importPath": "utils",
+        "description": "utils",
         "isExtraImport": true,
-        "detail": "valores",
+        "detail": "utils",
         "documentation": {}
     },
     {
-        "label": "persona_natural",
-        "importPath": "entidades.persona_natural",
-        "description": "entidades.persona_natural",
+        "label": "artesano",
+        "importPath": "entidades.artesano",
+        "description": "entidades.artesano",
         "isExtraImport": true,
-        "detail": "entidades.persona_natural",
+        "detail": "entidades.artesano",
+        "documentation": {}
+    },
+    {
+        "label": "estudiante",
+        "importPath": "entidades.estudiante",
+        "description": "entidades.estudiante",
+        "isExtraImport": true,
+        "detail": "entidades.estudiante",
+        "documentation": {}
+    },
+    {
+        "label": "persona_juridica",
+        "importPath": "entidades.persona_juridica",
+        "description": "entidades.persona_juridica",
+        "isExtraImport": true,
+        "detail": "entidades.persona_juridica",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca_publica",
+        "importPath": "entidades.biblioteca_publica",
+        "description": "entidades.biblioteca_publica",
+        "isExtraImport": true,
+        "detail": "entidades.biblioteca_publica",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca_escolar_cra",
+        "importPath": "entidades.biblioteca_escolar_cra",
+        "description": "entidades.biblioteca_escolar_cra",
+        "isExtraImport": true,
+        "detail": "entidades.biblioteca_escolar_cra",
+        "documentation": {}
+    },
+    {
+        "label": "artesania",
+        "importPath": "entidades.artesania",
+        "description": "entidades.artesania",
+        "isExtraImport": true,
+        "detail": "entidades.artesania",
+        "documentation": {}
+    },
+    {
+        "label": "ano",
+        "importPath": "entidades.ano",
+        "description": "entidades.ano",
+        "isExtraImport": true,
+        "detail": "entidades.ano",
+        "documentation": {}
+    },
+    {
+        "label": "establecimiento_educacional",
+        "importPath": "entidades.establecimiento_educacional",
+        "description": "entidades.establecimiento_educacional",
+        "isExtraImport": true,
+        "detail": "entidades.establecimiento_educacional",
+        "documentation": {}
+    },
+    {
+        "label": "ano",
+        "kind": 2,
+        "importPath": "entidades.ano",
+        "description": "entidades.ano",
+        "peekOfCode": "def ano(cursor, year):\n    year = int(year)\n    cursor.execute(\"INSERT INTO ano (ano) VALUES (%s)\", (year,))",
+        "detail": "entidades.ano",
+        "documentation": {}
+    },
+    {
+        "label": "artesania",
+        "kind": 2,
+        "importPath": "entidades.artesania",
+        "description": "entidades.artesania",
+        "peekOfCode": "def artesania(cursor, nombre_producto, ano_sello, id_artesano, rut_artesano):\n    ano_sello = int(ano_sello)\n    id_artesano = int(id_artesano)\n    rut_artesano = int(rut_artesano)\n    cursor.execute(\n        \"INSERT INTO artesania (nombre_producto,ano_sello,id_artesano,rut_artesano) VALUES (%s,%s,%s,%s) RETURNING id_artesania\",\n        (nombre_producto, ano_sello, id_artesano, rut_artesano),\n    )",
+        "detail": "entidades.artesania",
+        "documentation": {}
+    },
+    {
+        "label": "artesano",
+        "kind": 2,
+        "importPath": "entidades.artesano",
+        "description": "entidades.artesano",
+        "peekOfCode": "def artesano(\n    cursor,\n    cod_comuna,\n    rut,\n    nombre_elemento,\n    nombre,\n    sexo,\n    fecha_nacimiento,\n    direccion,\n    nombre_pueblo_ori,",
+        "detail": "entidades.artesano",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca",
+        "kind": 2,
+        "importPath": "entidades.biblioteca",
+        "description": "entidades.biblioteca",
+        "peekOfCode": "def biblioteca(cursor, nombre_bib):\n    cursor.execute(\n        \"INSERT INTO biblioteca (nombre_bib) VALUES (%s) RETURNING id_biblioteca\",\n        (nombre_bib,),\n    )\n    result = cursor.fetchone()\n    return result[0]",
+        "detail": "entidades.biblioteca",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca_escolar_cra",
+        "kind": 2,
+        "importPath": "entidades.biblioteca_escolar_cra",
+        "description": "entidades.biblioteca_escolar_cra",
+        "peekOfCode": "def biblioteca_escolar_cra(cursor, nom_bib, codigo_est) -> None:\n    id_biblioteca = biblioteca(cursor, nom_bib)\n    codigo_est = int(codigo_est)\n    cursor.execute(\n        \"INSERT INTO biblioteca_escolar_cra (id_biblioteca,codigo_est) VALUES (%s,%s)\",\n        (id_biblioteca, codigo_est),\n    )",
+        "detail": "entidades.biblioteca_escolar_cra",
+        "documentation": {}
+    },
+    {
+        "label": "biblioteca_publica",
+        "kind": 2,
+        "importPath": "entidades.biblioteca_publica",
+        "description": "entidades.biblioteca_publica",
+        "peekOfCode": "def biblioteca_publica(cursor, nom_bib, id_persona_juridica) -> None:\n    id_biblioteca = biblioteca(cursor, nom_bib)\n    cursor.execute(\n        \"INSERT INTO biblioteca_publica (id_biblioteca,id_persona_jur) VALUES (%s,%s)\",\n        (id_biblioteca,id_persona_juridica),\n    )",
+        "detail": "entidades.biblioteca_publica",
         "documentation": {}
     },
     {
@@ -61,8 +276,35 @@
         "kind": 2,
         "importPath": "entidades.entidad",
         "description": "entidades.entidad",
-        "peekOfCode": "def entidad(cursor,nombre,cod_comuna)-> int | None:\n  cursor.execute(f\"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",(nombre,cod_comuna))\n  result = cursor.fetchone()\n  return result[0] if result else None",
+        "peekOfCode": "def entidad(cursor, nombre, cod_comuna):\n    cod_comuna = int(cod_comuna)\n    cursor.execute(\n        \"INSERT INTO entidad (nombre,cod_comuna) VALUES (%s,%s) RETURNING id_entidad\",\n        (nombre, cod_comuna),\n    )\n    result = cursor.fetchone()\n    return int(result[0])",
         "detail": "entidades.entidad",
+        "documentation": {}
+    },
+    {
+        "label": "establecimiento_educacional",
+        "kind": 2,
+        "importPath": "entidades.establecimiento_educacional",
+        "description": "entidades.establecimiento_educacional",
+        "peekOfCode": "def establecimiento_educacional(cursor, nombre, cod_comuna):\n    cod_comuna = int(cod_comuna)\n    cursor.execute(\n        \"INSERT INTO establecimiento_educacional (nombre,cod_comuna) VALUES (%s,%s) RETURNING codigo_est\",\n        (nombre, cod_comuna),\n    )\n    return int(cursor.fetchone()[0])",
+        "detail": "entidades.establecimiento_educacional",
+        "documentation": {}
+    },
+    {
+        "label": "estudiante",
+        "kind": 2,
+        "importPath": "entidades.estudiante",
+        "description": "entidades.estudiante",
+        "peekOfCode": "def estudiante(\n    cursor,\n    cod_comuna,\n    rut,\n    nombre_elemento,\n    nombre,\n    sexo,\n    fecha_nacimiento,\n    direccion,\n    nombre_pueblo_ori,",
+        "detail": "entidades.estudiante",
+        "documentation": {}
+    },
+    {
+        "label": "persona_juridica",
+        "kind": 2,
+        "importPath": "entidades.persona_juridica",
+        "description": "entidades.persona_juridica",
+        "peekOfCode": "def persona_juridica(cursor, nombre, cod_comuna):\n    id_entidad = entidad(cursor, nombre, cod_comuna)\n    cursor.execute(\n        \"INSERT INTO persona_juridica (id_entidad) VALUES (%s)\", (id_entidad,)\n    )\n    return id_entidad",
+        "detail": "entidades.persona_juridica",
         "documentation": {}
     },
     {
@@ -77,46 +319,55 @@
     {
         "label": "random_run",
         "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
+        "importPath": "utils",
+        "description": "utils",
         "peekOfCode": "def random_run(fake: Faker) -> int:\n    return fake.unique.random_int(*rango_rut_valido)\ndef random_cod_comuna(fake: Faker) -> int:\n    return fake.random_int(*rango_cod_comuna)\ndef random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)",
-        "detail": "generar_datos",
+        "detail": "utils",
         "documentation": {}
     },
     {
         "label": "random_cod_comuna",
         "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def random_cod_comuna(fake: Faker) -> int:\n    return fake.random_int(*rango_cod_comuna)\ndef random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()",
-        "detail": "generar_datos",
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def random_cod_comuna(fake: Faker) -> int:\n    return fake.random_int(*rango_cod_comuna)\ndef random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\ndef random_disciplina(fake: Faker) -> str:\n    return fake.random_element(tipo_disciplina_artesano)",
+        "detail": "utils",
         "documentation": {}
     },
     {
         "label": "random_nombre_elemento",
         "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"",
-        "detail": "generar_datos",
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def random_nombre_elemento(fake: Faker) -> str:\n    return fake.random_element(valores_nombre_elemento_patrimonio_inmaterial)\ndef random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\ndef random_disciplina(fake: Faker) -> str:\n    return fake.random_element(tipo_disciplina_artesano)",
+        "detail": "utils",
         "documentation": {}
     },
     {
         "label": "random_sexo",
         "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"\n    host = getenv(\"DATABASE_HOST\") or \"localhost\"\n    port = getenv(\"DATABASE_PORT\") or \"5432\"",
-        "detail": "generar_datos",
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def random_sexo(fake: Faker) -> str:\n    return fake.random_element(tipo_sexo)\ndef random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\ndef random_disciplina(fake: Faker) -> str:\n    return fake.random_element(tipo_disciplina_artesano)",
+        "detail": "utils",
         "documentation": {}
     },
     {
         "label": "random_pueblo_originario",
         "kind": 2,
-        "importPath": "generar_datos",
-        "description": "generar_datos",
-        "peekOfCode": "def random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\nif __name__ == \"__main__\":\n    load_dotenv()\n    database = getenv(\"DATABASE_NAME\") or \"postgres\"\n    user = getenv(\"DATABASE_USER\") or \"postgres\"\n    host = getenv(\"DATABASE_HOST\") or \"localhost\"\n    port = getenv(\"DATABASE_PORT\") or \"5432\"\n    fake = Faker()\n    conn = psycopg2.connect(database=database, user=user, host=host, port=port)",
-        "detail": "generar_datos",
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def random_pueblo_originario(fake: Faker) -> str | None:\n    return fake.random_element(tipo_pueblo_originario)\ndef random_disciplina(fake: Faker) -> str:\n    return fake.random_element(tipo_disciplina_artesano)",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "random_disciplina",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def random_disciplina(fake: Faker) -> str:\n    return fake.random_element(tipo_disciplina_artesano)",
+        "detail": "utils",
         "documentation": {}
     },
     {
@@ -124,7 +375,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_cod_comuna = (347, 692)\nrango_rut_valido = (10000000, 99999999)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
+        "peekOfCode": "rango_cod_comuna = (1, 346)\nrango_rut_valido = (10000000, 99999999)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
         "detail": "valores",
         "documentation": {}
     },

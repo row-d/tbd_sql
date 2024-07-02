@@ -1,4 +1,4 @@
--- TODO: generar datos para tablas: region, biblioteca_publica, biblioteca_escolar_cra, estudiante, establecimiento_educacional, artesania, artesano, año
+-- TODO: generar datos para tablas: region, biblioteca_publica, biblioteca_escolar_cra, estudiante, establecimiento_educacional, artesania, artesano
 
 --VISTA
 /*

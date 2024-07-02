@@ -115,19 +115,22 @@ create table persona_natural(
 );
 
 create table artesano(
-  rut INTEGER PRIMARY KEY REFERENCES persona_natural(rut),
+  id_entidad INTEGER PRIMARY KEY REFERENCES persona_natural(id_entidad),
+  rut INTEGER UNIQUE NOT NULL REFERENCES persona_natural(rut),
   disciplina disciplina_artesano NOT NULL
 ); 
 
 create table artesania(
   id_artesania SERIAL PRIMARY KEY,
   nombre_producto VARCHAR NOT NULL, 
-  ano_sello DATE,
-  rut_artesano INTEGER REFERENCES artesano(rut)
+  ano_sello INTEGER,
+  id_artesano INTEGER NOT NULL REFERENCES artesano(id_entidad),
+  rut_artesano INTEGER NOT NULL REFERENCES artesano(rut)
 );
 
 create table estudiante(
-  rut INTEGER PRIMARY KEY REFERENCES persona_natural(rut)
+  id_entidad INTEGER PRIMARY KEY REFERENCES persona_natural(id_entidad),
+  rut INTEGER UNIQUE NOT NULL REFERENCES persona_natural(rut)
 );
 
 CREATE TABLE biblioteca( 
@@ -137,14 +140,16 @@ CREATE TABLE biblioteca(
 
 CREATE TABLE biblioteca_publica( 
   id_biblioteca INTEGER PRIMARY KEY REFERENCES biblioteca(id_biblioteca),
-  id_entidad INTEGER NOT NULL REFERENCES persona_juridica(id_entidad)
+  id_persona_jur INTEGER NOT NULL REFERENCES persona_juridica(id_entidad)
 ); 
 
 CREATE TABLE presta_material(
   id_biblioteca INTEGER NOT NULL REFERENCES biblioteca_publica(id_biblioteca),
-  rut_persona INTEGER NOT NULL REFERENCES persona_natural(rut), 
+  rut_persona_nat INTEGER NOT NULL REFERENCES persona_natural(rut), 
+  id_persona_nat INTEGER NOT NULL REFERENCES persona_natural(id_entidad),
   fecha DATE NOT NULL, 
-  CONSTRAINT presta_material_pk PRIMARY KEY (id_biblioteca, rut_persona)
+  CONSTRAINT presta_material_pk PRIMARY KEY (id_biblioteca, id_persona_nat),
+  CONSTRAINT presta_material_candidate UNIQUE (id_biblioteca, rut_persona_nat)
 );
 CREATE TABLE establecimiento_educacional(
   codigo_est SERIAL PRIMARY KEY,
@@ -166,10 +171,12 @@ CREATE TABLE atiende_ano(
 );
 
 CREATE TABLE estudia(
-  rut_estudiante INTEGER NOT NULL REFERENCES estudiante(rut),
   codigo_est INTEGER REFERENCES establecimiento_educacional(codigo_est), 
+  id_estudiante INTEGER NOT NULL REFERENCES estudiante(id_entidad),
+  rut_estudiante INTEGER NOT NULL REFERENCES estudiante(rut),
   nivel_alumno_ano nivel_educacional NOT NULL,
   ano INTEGER NOT NULL REFERENCES ano(ano),
+  CONSTRAINT estudia_pk UNIQUE (rut_estudiante, codigo_est),
   CONSTRAINT estudia_pk PRIMARY KEY (rut_estudiante, codigo_est)
 );
 
@@ -184,9 +191,11 @@ CREATE TABLE monumento_nacional(
 
 CREATE TABLE visita(
   id_patrimonio_nat INTEGER NOT NULL REFERENCES patrimonio_natural(id_patrimonio_nat),
-  rut INTEGER NOT NULL REFERENCES persona_natural(rut),
+  id_persona_nat INTEGER NOT NULL REFERENCES persona_natural(id_entidad),
+  rut_persona_nat INTEGER NOT NULL REFERENCES persona_natural(rut),
   fecha DATE NOT NULL,
-  CONSTRAINT visita_pk PRIMARY KEY (id_patrimonio_nat, rut)
+  CONSTRAINT visita_pk PRIMARY KEY (id_patrimonio_nat, id_persona_nat),
+  CONSTRAINT visita_candidate UNIQUE (id_patrimonio_nat, rut_persona_nat)
 );
 
 CREATE TABLE se_encuentra(
@@ -209,21 +218,22 @@ CREATE TABLE visita_ano(
   CONSTRAINT visita_ano_pk PRIMARY KEY (id_museo, ano)
 );
 
--- FIXME: Falta dominio en el pdf
-
-
 CREATE TABLE trabaja(
   id_museo INTEGER NOT NULL REFERENCES museo(id_museo),
-  rut INTEGER NOT NULL REFERENCES persona_natural(rut),
+  id_persona_nat INTEGER NOT NULL REFERENCES persona_natural(id_entidad),
+  rut_persona_nat INTEGER NOT NULL REFERENCES persona_natural(rut),
   vinculo tipo_vinculo NOT NULL,
-  CONSTRAINT trabaja_pk PRIMARY KEY (id_museo, rut)
+  CONSTRAINT trabaja_pk PRIMARY KEY (id_museo, id_persona_nat),
+  CONSTRAINT trabaja_candidate UNIQUE (id_museo, rut_persona_nat)
 );
 
 CREATE TABLE acude(
   id_museo INTEGER NOT NULL REFERENCES museo(id_museo),
-  rut INTEGER NOT NULL REFERENCES persona_natural(rut),
+  rut_persona_nat INTEGER NOT NULL REFERENCES persona_natural(rut),
+  id_persona_nat INTEGER NOT NULL REFERENCES persona_natural(id_entidad),
   fecha DATE NOT NULL,
-  CONSTRAINT acude_pk PRIMARY KEY (id_museo, rut)
+  CONSTRAINT acude_pk PRIMARY KEY (id_museo, id_persona_nat),
+  CONSTRAINT acude_candidate UNIQUE (id_museo, rut_persona_nat)
 );
 
 CREATE TABLE ambito_patrimonio(ambito VARCHAR PRIMARY KEY);

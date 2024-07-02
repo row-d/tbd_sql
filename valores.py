@@ -1,4 +1,4 @@
-rango_cod_comuna = (347, 692)
+rango_cod_comuna = (1, 346)
 rango_rut_valido = (10000000, 99999999)
 tipo_modalidad_actividad = ("presencial", "virtual", "ambas")
 tipo_sexo = ("mujer", "hombre")
@@ -95,8 +95,7 @@ valores_nombre_elemento_patrimonio_inmaterial = [
     "Circo Tradicional en Chile",
     "Modo de vida campesino de Larmahue y su vinculación con el medioambiente a través de las ruedas de agua",
     "Tradición de salineros y salineras en Cáhuil, Barrancas, La Villa, Lo Valdivia y Yoncavén",
-    "Trenzadoras y trenzadores de paja de trigo ligún en la localidad de Cutemu y alrededores, en la comuna de Paredones, región de O"
-    "Higgins",
+    "Trenzadoras y trenzadores de paja de trigo ligún en la localidad de Cutemu y alrededores, en la comuna de Paredones, región de O'Higgins",
     "Baile de los Negros de Lora",
     "Canto a lo poeta",
     "Circo Tradicional en Chile",
