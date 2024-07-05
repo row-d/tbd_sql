@@ -176,8 +176,8 @@ CREATE TABLE estudia(
   rut_estudiante INTEGER NOT NULL REFERENCES estudiante(rut),
   nivel_alumno_ano nivel_educacional NOT NULL,
   ano INTEGER NOT NULL REFERENCES ano(ano),
-  CONSTRAINT estudia_pk UNIQUE (rut_estudiante, codigo_est),
-  CONSTRAINT estudia_pk PRIMARY KEY (rut_estudiante, codigo_est)
+  CONSTRAINT estudia_candidate UNIQUE (rut_estudiante, codigo_est),
+  CONSTRAINT estudia_pk PRIMARY KEY (id_estudiante, codigo_est)
 );
 
 

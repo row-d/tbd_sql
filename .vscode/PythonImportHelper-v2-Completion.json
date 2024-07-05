@@ -96,11 +96,43 @@
         "documentation": {}
     },
     {
+        "label": "rango_cod_comuna",
+        "importPath": "valores",
+        "description": "valores",
+        "isExtraImport": true,
+        "detail": "valores",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "valores",
         "description": "valores",
         "isExtraImport": true,
         "detail": "valores",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "importPath": "psycopg2._psycopg",
+        "description": "psycopg2._psycopg",
+        "isExtraImport": true,
+        "detail": "psycopg2._psycopg",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "importPath": "psycopg2._psycopg",
+        "description": "psycopg2._psycopg",
+        "isExtraImport": true,
+        "detail": "psycopg2._psycopg",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "importPath": "psycopg2._psycopg",
+        "description": "psycopg2._psycopg",
+        "isExtraImport": true,
+        "detail": "psycopg2._psycopg",
         "documentation": {}
     },
     {
@@ -149,22 +181,6 @@
         "description": "psycopg2",
         "isExtraImport": true,
         "detail": "psycopg2",
-        "documentation": {}
-    },
-    {
-        "label": "cursor",
-        "importPath": "psycopg2._psycopg",
-        "description": "psycopg2._psycopg",
-        "isExtraImport": true,
-        "detail": "psycopg2._psycopg",
-        "documentation": {}
-    },
-    {
-        "label": "cursor",
-        "importPath": "psycopg2._psycopg",
-        "description": "psycopg2._psycopg",
-        "isExtraImport": true,
-        "detail": "psycopg2._psycopg",
         "documentation": {}
     },
     {
@@ -233,6 +249,14 @@
         "documentation": {}
     },
     {
+        "label": "estudiante",
+        "importPath": "entidades.estudiante",
+        "description": "entidades.estudiante",
+        "isExtraImport": true,
+        "detail": "entidades.estudiante",
+        "documentation": {}
+    },
+    {
         "label": "biblioteca_publica",
         "importPath": "entidades.biblioteca_publica",
         "description": "entidades.biblioteca_publica",
@@ -281,6 +305,14 @@
         "documentation": {}
     },
     {
+        "label": "estudia",
+        "importPath": "relaciones.estudia",
+        "description": "relaciones.estudia",
+        "isExtraImport": true,
+        "detail": "relaciones.estudia",
+        "documentation": {}
+    },
+    {
         "label": "ano",
         "kind": 2,
         "importPath": "entidades.ano",
@@ -294,7 +326,7 @@
         "kind": 2,
         "importPath": "entidades.artesania",
         "description": "entidades.artesania",
-        "peekOfCode": "def artesania(cursor, nombre_producto, ano_sello, id_artesano, rut_artesano):\n    ano_sello = int(ano_sello)\n    id_artesano = int(id_artesano)\n    rut_artesano = int(rut_artesano)\n    cursor.execute(\n        \"INSERT INTO artesania (nombre_producto,ano_sello,id_artesano,rut_artesano) VALUES (%s,%s,%s,%s) RETURNING id_artesania\",\n        (nombre_producto, ano_sello, id_artesano, rut_artesano),\n    )",
+        "peekOfCode": "def artesania(cursor, nombre_producto, ano_sello:int | None, id_artesano, rut_artesano):\n    id_artesano = int(id_artesano)\n    rut_artesano = int(rut_artesano)\n    cursor.execute(\n        \"INSERT INTO artesania (nombre_producto,ano_sello,id_artesano,rut_artesano) VALUES (%s,%s,%s,%s) RETURNING id_artesania\",\n        (nombre_producto, ano_sello, id_artesano, rut_artesano),\n    )",
         "detail": "entidades.artesania",
         "documentation": {}
     },
@@ -389,6 +421,15 @@
         "documentation": {}
     },
     {
+        "label": "estudia",
+        "kind": 2,
+        "importPath": "relaciones.estudia",
+        "description": "relaciones.estudia",
+        "peekOfCode": "def estudia(\n    cursor : CURSOR,\n    codigo_est: int,\n    id_estudiante: int,\n    rut_estudiante: int,\n    nivel_alumno_ano: str,\n    ano: int,   \n):\n    cursor.execute(\n        \"INSERT INTO estudia (codigo_est, id_estudiante, rut_estudiante, nivel_alumno_ano, ano) VALUES (%s, %s, %s, %s, %s)\",",
+        "detail": "relaciones.estudia",
+        "documentation": {}
+    },
+    {
         "label": "flow_template",
         "kind": 2,
         "importPath": "flow_template",
@@ -402,7 +443,7 @@
         "kind": 2,
         "importPath": "generar_datos",
         "description": "generar_datos",
-        "peekOfCode": "def main(cursor, fake):\n    filas_por_entidad = 10\n    personas_juridicas = []\n    personas_naturales = []\n    estudiantes = []\n    artesanos = []\n    codigos_est = []\n    bibs_esc_cra = []\n    if len(sys.argv) > 1 and sys.argv[1] in (\"--first\", \"-f\"):\n        cursor.execute(open(\"cultura.sql\", \"r\").read())",
+        "peekOfCode": "def main(cursor, fake):\n    filas_por_entidad = 15\n    if len(sys.argv) > 1 and sys.argv[1] in (\"--first\", \"-f\"):\n        cursor.execute(open(\"cultura.sql\", \"r\").read())\n        cursor.execute(open(\"seed.sql\", \"r\").read())\n        # - ano\n        for y in range(*rango_ano):\n            ano(cursor, y)\n    # por cada comuna generar datos\n    for cod_comuna in range(*rango_cod_comuna):",
         "detail": "generar_datos",
         "documentation": {}
     },
@@ -411,7 +452,16 @@
         "kind": 2,
         "importPath": "generar_relaciones",
         "description": "generar_relaciones",
-        "peekOfCode": "def main(cursor: cursor, fake: Faker):\n    cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n    ids_biblioteca = cursor.fetchall()\n    for id_biblioteca in ids_biblioteca:\n        for y in range(*rango_ano):\n            if fake.boolean(50):\n                atiende_ano(cursor, id_biblioteca[0], y)\nif __name__ == \"__main__\":\n    flow_template(main)",
+        "peekOfCode": "def main(cursor: cursor, fake: Faker):\n    # para todas las bibliotecas existentes le asigna un año de atención con una probabilidad del 50%\n    if len(sys.argv) > 1:\n        match sys.argv[1]:\n            case \"atiende_ano\":\n                cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n                ids_biblioteca = cursor.fetchall()\n                for id_biblioteca in ids_biblioteca:\n                    for y in range(*rango_ano):\n                        if fake.boolean(50):",
+        "detail": "generar_relaciones",
+        "documentation": {}
+    },
+    {
+        "label": "comandos",
+        "kind": 5,
+        "importPath": "generar_relaciones",
+        "description": "generar_relaciones",
+        "peekOfCode": "comandos = {\"atiende_ano\": \"asigna valores a la relacion atiende_ano\"}\ndef main(cursor: cursor, fake: Faker):\n    # para todas las bibliotecas existentes le asigna un año de atención con una probabilidad del 50%\n    if len(sys.argv) > 1:\n        match sys.argv[1]:\n            case \"atiende_ano\":\n                cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n                ids_biblioteca = cursor.fetchall()\n                for id_biblioteca in ids_biblioteca:\n                    for y in range(*rango_ano):",
         "detail": "generar_relaciones",
         "documentation": {}
     },
@@ -474,7 +524,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_cod_comuna = (1, 346)\nrango_rut_valido = (10000000, 99999999)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",",
+        "peekOfCode": "rango_cod_comuna = (1, 347)\nrango_rut_valido = (11111111, 99999999+1)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -483,7 +533,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_rut_valido = (10000000, 99999999)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
+        "peekOfCode": "rango_rut_valido = (11111111, 99999999+1)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
         "detail": "valores",
         "documentation": {}
     },
