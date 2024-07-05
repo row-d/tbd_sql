@@ -228,12 +228,11 @@ CREATE TABLE trabaja(
 );
 
 CREATE TABLE acude(
+  id_acude SERIAL PRIMARY KEY,
   id_museo INTEGER NOT NULL REFERENCES museo(id_museo),
   rut_persona_nat INTEGER NOT NULL REFERENCES persona_natural(rut),
   id_persona_nat INTEGER NOT NULL REFERENCES persona_natural(id_entidad),
-  fecha DATE NOT NULL,
-  CONSTRAINT acude_pk PRIMARY KEY (id_museo, id_persona_nat),
-  CONSTRAINT acude_candidate UNIQUE (id_museo, rut_persona_nat)
+  fecha DATE NOT NULL
 );
 
 CREATE TABLE ambito_patrimonio(ambito VARCHAR PRIMARY KEY);
