@@ -1,2 +1,3 @@
 result.sql
+*.backup
 __pycache__/
