@@ -8,6 +8,7 @@ CREATE
 OR REPLACE VIEW bibliotecas_por_region AS (
      SELECT
           re.cod_region,
+          re.nom_region,
           (
                SELECT
                     count(*)
@@ -42,8 +43,6 @@ OR REPLACE VIEW bibliotecas_por_region AS (
  estadística de atendidos en ese año y nivel en las bibliotecas escolares que corresponden tanto al
  establecimiento antiguo como al nuevo.
  */
-
-
 
 CREATE
 OR REPLACE FUNCTION estudiante_cambia_establecimiento_fn() RETURNS TRIGGER AS $$
@@ -92,7 +91,7 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER estudiante_cambia_establecimiento
 AFTER
 UPDATE
-     ON estudia FOR EACH ROW EXECUTE FUNCTION estudiante_cambia_establecimiento_fn();
+ON estudia FOR EACH ROW EXECUTE FUNCTION estudiante_cambia_establecimiento_fn();
      
 
 -- FUNCIÓN

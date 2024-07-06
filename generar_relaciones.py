@@ -18,13 +18,19 @@ def main(cursor: cursor, fake: Faker):
             case "atiende_ano":
                 cursor.execute("SELECT id_biblioteca FROM biblioteca_escolar_cra")
                 ids_biblioteca = cursor.fetchall()
+                
+                rel_bib_ano = {}
+                
                 for id_biblioteca in ids_biblioteca:
-                    for y in range(*rango_ano):
-                        if fake.boolean(50):
-                            atiende_ano(cursor, id_biblioteca[0], y)
+                    for _ in range(5):
+                        _ano = fake.random_int(2000, 2024)
+                        if id_biblioteca[0] not in rel_bib_ano:
+                            rel_bib_ano[id_biblioteca[0]] = []
+                        if _ano not in rel_bib_ano[id_biblioteca[0]]:
+                            rel_bib_ano[id_biblioteca[0]].append(_ano)
+                            atiende_ano(cursor, id_biblioteca[0],_ano)
             case "estudia":
                 for cod_comuna in range(*rango_cod_comuna):
-
                     cursor.execute(
                         "SELECT codigo_est FROM establecimiento_educacional WHERE cod_comuna = %s",
                         (cod_comuna,),
@@ -39,21 +45,20 @@ def main(cursor: cursor, fake: Faker):
                     while True:
                         if len(ids_estudiante) == 0:
                             break
-                        id_estudiante,rut = ids_estudiante.pop()
-                        estudia(
-                            cursor,
-                            codigos_est[i_est_ed][0],
-                            id_estudiante,
-                            rut,
-                            fake.random_element(("basica", "media")),
-                            int(fake.year()),
-                        )
+                        for _ in range(5):
+                            id_estudiante,rut = ids_estudiante.pop()
+                            estudia(
+                                cursor,
+                                codigos_est[i_est_ed][0],
+                                id_estudiante,
+                                rut,
+                                fake.random_element(("basica", "media")),
+                                fake.random_int(2000,2024),
+                            )
                         if i_est_ed < len(codigos_est):
                             i_est_ed += 1
                         else:
                             i_est_ed = 0
-                        
-                      
 
             case _:
                 print("comando no encontrado")

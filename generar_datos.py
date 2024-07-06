@@ -95,24 +95,24 @@ def main(cursor, fake):
             )
             codigos_est.append(cod_est)
 
-    # - biblioteca_publica
-    for _ in range(filas_por_entidad):
-        biblioteca_publica(cursor, fake.word(), fake.random_element(personas_juridicas))
-    # - biblioteca_escolar_cra
-    for codigo_est in codigos_est:
-        for _ in range(fake.random_int(1, 3)):
-            if fake.boolean(50):
-                biblioteca_escolar_cra(cursor, fake.company(), codigo_est)
-    # - artesania
-    for _ in range(filas_por_entidad):
-        random_artesano = fake.random_element(artesanos)
-        artesania(
-            cursor,
-            fake.word(),
-            int(fake.year()) if fake.boolean(50) else None,
-            random_artesano[0],
-            random_artesano[1],
-        )
+        # - biblioteca_publica
+        for _ in range(filas_por_entidad):
+            biblioteca_publica(cursor, fake.word(), fake.random_element(personas_juridicas))
+        # - biblioteca_escolar_cra
+        for codigo_est in codigos_est:
+            for _ in range(fake.random_int(1, 3)):
+                if fake.boolean(50):
+                    biblioteca_escolar_cra(cursor, fake.company(), codigo_est)
+        # - artesania
+        for _ in range(filas_por_entidad):
+            random_artesano = fake.random_element(artesanos)
+            artesania(
+                cursor,
+                fake.word(),
+                int(fake.year()) if fake.boolean(50) else None,
+                random_artesano[0],
+                random_artesano[1],
+            )
     
 
 

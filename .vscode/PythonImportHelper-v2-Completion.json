@@ -452,7 +452,7 @@
         "kind": 2,
         "importPath": "generar_relaciones",
         "description": "generar_relaciones",
-        "peekOfCode": "def main(cursor: cursor, fake: Faker):\n    # para todas las bibliotecas existentes le asigna un año de atención con una probabilidad del 50%\n    if len(sys.argv) > 1:\n        match sys.argv[1]:\n            case \"atiende_ano\":\n                cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n                ids_biblioteca = cursor.fetchall()\n                for id_biblioteca in ids_biblioteca:\n                    for y in range(*rango_ano):\n                        if fake.boolean(50):",
+        "peekOfCode": "def main(cursor: cursor, fake: Faker):\n    # para todas las bibliotecas existentes le asigna un año de atención con una probabilidad del 50%\n    if len(sys.argv) > 1:\n        match sys.argv[1]:\n            case \"atiende_ano\":\n                cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n                ids_biblioteca = cursor.fetchall()\n                rel_bib_ano = {}\n                for id_biblioteca in ids_biblioteca:\n                    for _ in range(5):",
         "detail": "generar_relaciones",
         "documentation": {}
     },
@@ -461,7 +461,7 @@
         "kind": 5,
         "importPath": "generar_relaciones",
         "description": "generar_relaciones",
-        "peekOfCode": "comandos = {\"atiende_ano\": \"asigna valores a la relacion atiende_ano\"}\ndef main(cursor: cursor, fake: Faker):\n    # para todas las bibliotecas existentes le asigna un año de atención con una probabilidad del 50%\n    if len(sys.argv) > 1:\n        match sys.argv[1]:\n            case \"atiende_ano\":\n                cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n                ids_biblioteca = cursor.fetchall()\n                for id_biblioteca in ids_biblioteca:\n                    for y in range(*rango_ano):",
+        "peekOfCode": "comandos = {\"atiende_ano\": \"asigna valores a la relacion atiende_ano\"}\ndef main(cursor: cursor, fake: Faker):\n    # para todas las bibliotecas existentes le asigna un año de atención con una probabilidad del 50%\n    if len(sys.argv) > 1:\n        match sys.argv[1]:\n            case \"atiende_ano\":\n                cursor.execute(\"SELECT id_biblioteca FROM biblioteca_escolar_cra\")\n                ids_biblioteca = cursor.fetchall()\n                rel_bib_ano = {}\n                for id_biblioteca in ids_biblioteca:",
         "detail": "generar_relaciones",
         "documentation": {}
     },
@@ -524,7 +524,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_cod_comuna = (1, 347)\nrango_rut_valido = (11111111, 99999999+1)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",",
+        "peekOfCode": "rango_cod_comuna = (1, 347)\nrango_rut_valido = (11111111, 99999999+1)\nrango_ano = (200, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -533,7 +533,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_rut_valido = (11111111, 99999999+1)\nrango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
+        "peekOfCode": "rango_rut_valido = (11111111, 99999999+1)\nrango_ano = (200, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",",
         "detail": "valores",
         "documentation": {}
     },
@@ -542,7 +542,7 @@
         "kind": 5,
         "importPath": "valores",
         "description": "valores",
-        "peekOfCode": "rango_ano = (1900, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",",
+        "peekOfCode": "rango_ano = (200, 2025)\ntipo_modalidad_actividad = (\"presencial\", \"virtual\", \"ambas\")\ntipo_sexo = (\"mujer\", \"hombre\")\ntipo_disciplina_artesano = (\n    \"alfareria y ceramica\",\n    \"cesteria\",\n    \"canteria y piedras\",\n    \"huesos-cuernos-conchas\",\n    \"instrumentos musicales y luthier\",\n    \"madera\",",
         "detail": "valores",
         "documentation": {}
     },
